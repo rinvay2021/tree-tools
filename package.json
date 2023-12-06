@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "build": "rimraf dist && rollup -c --bundleConfigAsCjs",
-    "build:lib": "rimraf lib && tsc && babel lib --out-dir lib"
+    "build:lib": "rimraf lib && tsc && babel lib --out-dir lib",
+    "test": "echo \"No test specified\""
   },
   "devDependencies": {
     "@babel/cli": "^7.23.4",
