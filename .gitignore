@@ -1,6 +1,4 @@
 # Custom ignore
-dist/
-lib/
 # yarn.lock
 # package-lock.json
 

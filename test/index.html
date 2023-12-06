@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="../dist/@1.0.0/index.js"></script>
+  <script>
+
+    let treeData = [
+      {
+        id: '1',
+        parentId: '0',
+        name: 'rinvay1',
+        children: [
+          {
+            id: '1-2',
+            parentId: '1',
+            name: 'rinvay1-2',
+            children: [
+              {
+                id: '1-2-1',
+                parentId: '1-2',
+                name: 'rinvay1-2-1',
+              },
+            ],
+          },
+          {
+            id: '1-1',
+            parentId: '1',
+            name: 'rinvay1-1',
+          },
+        ],
+      },
+      {
+        id: '2',
+        parentId: '0',
+        name: 'rinvay2',
+        children: [
+          {
+            id: '2-1',
+            parentId: '2',
+            name: 'rinvay2-1',
+          },
+          {
+            id: '2-2',
+            parentId: '2',
+            name: 'rinvay2-2',
+          },
+        ],
+      },
+    ]
+
+    const list = [{
+      id: '1',
+      parentId: '0',
+      name: 'rinvay1'
+    }, {
+      id: '2',
+      parentId: '0',
+      name: 'rinvay2'
+    }, {
+      id: '1-2',
+      parentId: '1',
+      name: 'rinvay1-2'
+    }, {
+      id: '1-2-1',
+      parentId: '1-2',
+      name: 'rinvay1-2-1'
+    }, {
+      id: '1-1',
+      parentId: '1',
+      name: 'rinvay1-1'
+    }, {
+      id: '2-1',
+      parentId: '2',
+      name: 'rinvay2-1'
+    }, {
+      id: '2-2',
+      parentId: '2',
+      name: 'rinvay2-2'
+    }];
+    // 生成实例
+    const tree = treetools.create({ pid: 'parentId' })
+    // list 转 tree
+    console.log(tree.format(list))
+    // 深度遍历展开
+    console.log(tree.flat(treeData, { type: 'DFS' }))
+    // 广度遍历展开
+    console.log(tree.flat(treeData, { type: 'BFS' }))
+    // 查询节点
+    console.log(tree.find(treeData, (node) => node.id === '2-2'))
+    // 插入节点
+    console.log(tree.insert(treeData,
+      {
+        id: '1-2-1',
+        parentId: '1-2',
+        name: 'rinvay1-2-1',
+      },
+      {
+        id: '1-2-2',
+        name: 'rinvay1-2-2',
+      },
+      { order: 'Front' }
+    ))
+    // 移除节点
+    console.log(tree.remove(treeData, node => node.id === '1-2-1'))
+  </script>
+</body>
+
+</html>
